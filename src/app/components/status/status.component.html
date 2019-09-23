@@ -1,6 +1,6 @@
 <div class="shadow-lg p-3 mb-5 bg-white rounded" *ngFor="let status of statuses; let i = index">
      <div class="panel-body">
-       <img [src]="status.profile.profilePicture" class="rounded-circle pull-right" width="75" height="75"> 
+       <img [src]="status.profile.profilePicture" class="rounded-circle" width="75" height="75"> 
        <a [routerLink]="['/profile', status.profile.id]" class="h4 text-capitalize">{{status.profile.firstName}} {{status.profile.lastName}}</a>
        <div class="clearfix"></div>
        <hr>

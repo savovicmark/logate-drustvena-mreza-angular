@@ -1,7 +1,7 @@
 <div class="shadow-lg p-3 mb-5 bg-white rounded" *ngFor="let image of images; let i = index">
   
     <div class="panel-body">
-        <p><img [src]="image.profile.profilePicture" class="rounded-circle pull-right" width="75" height="75"> 
+        <p><img [src]="image.profile.profilePicture" class="rounded-circle" width="75" height="75"> 
           <a [routerLink]="['/profile', image.profile.id]" class="h4 text-capitalize">{{image.profile.firstName}} {{image.profile.lastName}}</a></p>
     <div class="panel-thumbnail"><img [src]="image.path" class="img-fluid img-thumbnail" height="400" width="400" ></div>
     <div class="clearfix"></div>
