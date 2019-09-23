@@ -1,0 +1,27 @@
+<form #imageForm="ngForm">
+  <div class="container">
+    <h1>Add Image</h1>
+    <p>Please fill in this form to add an image to your account.</p>
+    <hr>
+
+    
+    
+
+    <label for="description"><b>Image Description</b></label>
+    <input type="text" placeholder="Say something about this picture..." id="description" 
+      name="aboutImg" #descriptionVar="ngModel" [(ngModel)]="picture.description" >
+
+    
+    <label class="btn btn-primary btn-large">Select picture for upload
+    <input type="file" name="img" ng2FileSelect [uploader]='uploader' hidden>
+    </label>
+  
+
+    <button type="submit" class="registerbtn" (click)="uploader.uploadAll()" >Submit picture</button>
+  </div>
+
+  <div class="container signin">
+    <p>Don't want to add picture? Go back to profile <a [routerLink]="['/profile', 'myProfile']">My Profile</a>.</p>
+  </div>
+ 
+</form>

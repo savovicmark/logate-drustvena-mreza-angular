@@ -1,0 +1,31 @@
+<div class="container bootstrap snippets" >
+  <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-4" *ngFor="let like of likes">
+          <div class="panel rounded shadow">
+              <div class="panel-body">
+                  <div class="inner-all">
+                      <ul class="list-unstyled">
+                          <li class="text-center">
+                              <img data-no-retina="" class="rounded-circle img-responsive img-bordered-primary"
+                               [src]="like.profile.profilePicture" alt="Profile Picture" width="150" height="150">
+                          </li>
+                          <li class="text-center">
+                             
+                            <a [routerLink]="['/profile', like.profile.id]">  <h4 class="text-capitalize"> 
+                              {{like.profile.firstName}} {{like.profile.lastName}} </h4></a>
+                              
+                          </li>
+                          
+                          <li><br></li>
+                         
+                      </ul>
+                  </div>
+              </div>
+          </div><!-- /.panel -->
+  
+         
+  
+      </div>
+      
+  </div>
+</div>

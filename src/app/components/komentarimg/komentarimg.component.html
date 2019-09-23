@@ -1,0 +1,12 @@
+<div class="panel-footer no-padding no-border" *ngFor="let comment of imgComments">
+    <div class="media inner-all no-margin">
+        <div class="pull-left">
+            <img [src]="comment?.profile?.profilePicture" alt="..." class="rounded-circle img-post2" width="50" height="50">
+        </div><!-- /.pull-left -->
+        <div class="media-body">
+            <a [routerLink]="['/profile', comment.profile.id]" class="h5 text-capitalize">{{comment.profile.firstName}} {{comment.profile.lastName}}</a>
+          <p> {{comment.comment}}  <button *ngIf="deleteService.ifMyPost(comment, myProfileService.id)" 
+           (click)="deleteComment(comment.picture.id, comment.id)" class="btn btn-link btn-sm float-right">x</button></p>
+        </div><!-- /.media-body -->
+    </div><!-- /.media -->
+  </div>

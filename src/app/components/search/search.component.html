@@ -1,0 +1,38 @@
+<form (ngSubmit)="search()" #searchForm="ngForm">
+  <div class="container">
+    <h1>Search</h1>
+    <p>Please fill in this form to search profiles by given criteria.</p>
+    <hr>
+
+    <label for="name"><b>Search by profile First Name</b></label>
+    <input type="text" placeholder="First Name" id="name" 
+      name="firstName" 
+      minlength="3"
+      #firstNameVar="ngModel"
+      [(ngModel)]="profile.firstName"
+       >
+
+    <label for="lastname"><b>Search by profile Last Name</b></label>
+    <input type="text" placeholder="Last Name" id="lastname" 
+      name="lastName"  
+      minlength="3"
+      #lastNameVar="ngModel"
+      [(ngModel)]="profile.lastName" >
+
+    <label for="username"><b>Search by profile Username</b></label>
+    <input type="text" placeholder="Username" id="username" 
+      name="username" 
+      minlength="4"
+      maxlength="15"
+      #usernameVar="ngModel"
+      [(ngModel)]="profile.username" >
+
+   
+
+    <button type="submit" class="registerbtn"  >Search</button>
+  </div>
+
+  <div class="container signin">
+    <p>Go to  <a routerLink="/newPictures"> Homepage </a> </p>
+  </div>
+</form>

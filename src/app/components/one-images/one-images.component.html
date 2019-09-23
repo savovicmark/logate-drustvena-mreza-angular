@@ -1,0 +1,36 @@
+<div class="shadow-lg p-3 mb-5 bg-white rounded" *ngFor="let image of images; let i = index">
+  
+  <div class="panel-body">
+      <p><img [src]="image.profile.profilePicture" class="rounded-circle pull-right" width="75" height="75"> 
+        <a [routerLink]="['/profile', image.profile.id]" class="h4 text-capitalize">{{image.profile.firstName}} {{image.profile.lastName}}</a></p>
+  <div class="panel-thumbnail"><img [src]="image.path" class="img-fluid img-thumbnail" width="400" height="400"></div>
+  <div class="clearfix"></div>
+     <hr>
+     <p class="h5">{{image.description}}</p>
+  </div>
+  <hr>
+  <app-komentarimg [pictureId]="image.id"></app-komentarimg>
+  <form>
+      <div class="input-group">
+
+          <div *ngIf="!pictureLikeService.ifMyLike(image.pictureLikes, myProfileService.id)" class="input-group-btn">
+              <button (click)="submitImgLike(image.id, i)" class="btn btn-default">Like-{{image.pictureLikes.length}}</button>
+              <button class="btn btn-default"><i class="glyphicon glyphicon-share"></i></button>
+              <button *ngIf="image.pictureLikes.length" class="btn btn-link btn-sm" (click)="viewLikes(image.id)" >O</button>
+              </div>
+    
+          <div *ngIf="pictureLikeService.ifMyLike(image.pictureLikes, myProfileService.id)" class="input-group-btn">
+               <button (click)="deleteImgLike(image.id, i)" class="btn btn-default">Unlike-{{image.pictureLikes.length}}</button>
+               <button class="btn btn-default"><i class="glyphicon glyphicon-share"></i></button>
+               <button *ngIf="image.pictureLikes.length" class="btn btn-link btn-sm" (click)="viewLikes(image.id)" >O</button>
+                </div>
+       
+       
+        <input type="text" name="addImgComment-{{i}}" class="form-control" ngModel 
+          #inputVar (ngModelChange)="comment=$event" placeholder="Add a comment..">
+          <button type="submit" (click)="submitImgComment(image.id)" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+    <hr>
+   
+</div>

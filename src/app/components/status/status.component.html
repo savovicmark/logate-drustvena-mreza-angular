@@ -1,0 +1,42 @@
+<div class="shadow-lg p-3 mb-5 bg-white rounded" *ngFor="let status of statuses; let i = index">
+     <div class="panel-body">
+       <img [src]="status.profile.profilePicture" class="rounded-circle pull-right" width="75" height="75"> 
+       <a [routerLink]="['/profile', status.profile.id]" class="h4 text-capitalize">{{status.profile.firstName}} {{status.profile.lastName}}</a>
+       <div class="clearfix"></div>
+       <hr>
+       
+       <p class="h5">{{status.status}} <button *ngIf="deleteService.ifMyPost(status, myProfileService.id)"
+         (click)="deleteStatus(status.id)" class="btn btn-link btn-sm float-right" >X</button>  </p>
+       
+       <hr>
+
+       <app-statuscomment [statusId]="status.id"></app-statuscomment>
+      
+
+       <form *ngIf="registerService.isLogedIn()">
+       <div class="input-group">
+        
+        <div *ngIf="!statusLikeService.ifMyLike(status.statusLikes, myProfileService.id)" class="input-group-btn">
+          <button (click)="submitStatusLike(status.id, i)" class="btn btn-default">Like-{{status.statusLikes.length}}</button>
+          <button class="btn btn-default"><i class="glyphicon glyphicon-share"></i></button>
+          <button *ngIf="status.statusLikes.length" class="btn btn-link btn-sm" (click)="viewLikes(status.id)" >O</button>
+          </div>
+
+      <div *ngIf="statusLikeService.ifMyLike(status.statusLikes, myProfileService.id)" class="input-group-btn">
+           <button (click)="deleteStatusLike(status.id, i)" class="btn btn-default">Unlike-{{status.statusLikes.length}}</button>
+           <button class="btn btn-default"><i class="glyphicon glyphicon-share"></i></button>
+           <button *ngIf="status.statusLikes.length" class="btn btn-link btn-sm" (click)="viewLikes(status.id)" >O</button>
+            </div>
+
+
+         <input type="text" class="form-control" placeholder="Add a comment.."
+         name="addStatusComment-{{i}}" ngModel #inputVar (ngModelChange)="comment=$event" >
+         <button type="submit" (click)="submitStatusComment(status.id)"
+          class="btn btn-primary">Submit</button>
+       </div>
+       <hr>
+       </form>
+      
+     </div>
+    
+  </div>

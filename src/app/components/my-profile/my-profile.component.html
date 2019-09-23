@@ -1,0 +1,87 @@
+<div class="container bootstrap snippets" *ngFor="let profile of deleteService.myProfile" >
+  <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-4">
+          <div class="panel rounded shadow">
+              <div class="panel-body">
+                  <div class="inner-all">
+                      <ul class="list-unstyled">
+
+                            <button 
+                            class="btn btn-link btn-sm" (click)="deleteProfile()" >X</button>
+
+                          <li class="text-center">
+
+                            
+
+                              <img data-no-retina="" class="rounded-circle img-responsive img-bordered-primary"
+                               [src]="profile.profilePicture" alt="Profile Picture" width="125" height="125">
+
+                            
+
+                          </li>
+                          <li class="text-center">
+                              <h4 class="text-capitalize"> {{profile.firstName}} {{profile.lastName}} </h4>
+                          </li>
+                          <li><br></li>
+                          <li>
+                              <div class="btn-group-vertical btn-block">
+                                  <a routerLink="/addPicture" class="btn btn-default"><i class="fa fa-cog pull-right"></i>Add Image</a>
+                                  <a (click)="logout()" class="btn btn-default"><i class="fa fa-sign-out pull-right"></i>Logout</a>
+                                  
+                                  <label class="btn btn-primary">Add Profile Picture 
+                                      <input type="file" name="profilePicture"ng2FileSelect [uploader]='uploader'  hidden>
+                                  </label>
+                                  <button class="btn btn-primary btn-sm" (click)="uploader.uploadAll()" >Submit</button>
+                                
+                              </div>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+          </div><!-- /.panel -->
+  
+         
+  
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm-8">
+  
+      <div class="profile-cover">
+          <div class="cover rounded shadow no-overflow">
+              <div class="inner-cover">
+                  <!-- Start offcanvas btn group menu: This menu will take position at the top of profile cover (mobile only). -->
+                  <div class="btn-group cover-menu-mobile hidden-lg hidden-md">
+                      <button type="button" class="btn btn-theme btn-sm dropdown-toggle" data-toggle="dropdown">
+                          <i class="fa fa-bars"></i>
+                      </button>
+                      
+                  </div>
+                  <img  src="http://localhost:3000/images/cover.jpg" 
+                  class="img-responsive full-width" alt="cover" style="max-height:200px;">
+              </div>
+              <ul class="list-unstyled no-padding hidden-sm hidden-xs cover-menu">
+                  
+                  <li><a [routerLink]="['/newPictures']"><i class="fa fa-fw fa-user"></i> <span>Home</span></a></li>
+                  <li><a [routerLink]="['/profile','myProfile','oneProfileImages']"><i class="fa fa-fw fa-photo"></i> 
+                    <span>Slike</span> <small>( {{profile.pictures.length}} ) </small></a></li>
+                  <li><a [routerLink]="['/profile','myProfile','oneProfileStatuses']"><i class="fa fa-fw fa-users"></i>
+                    <span> Statusi </span><small>( {{profile.statuses.length}} )</small></a></li>
+                  
+              </ul>
+          </div><!-- /.cover -->
+      </div><!-- /.profile-cover -->
+      <div class="divider"></div>
+      <div class="panel rounded shadow">
+          <form #statusFormVar="ngForm">
+              <textarea class="form-control input-lg no-border" name="addStatus" rows="2" placeholder="What are you doing?..."
+              ngModel #inputVar (ngModelChange)="status=$event" ></textarea>
+              <button type="submit" class="btn btn-primary btn-large" (click)="submitStatus()">Add Status</button>
+          </form>
+          
+          <!--odje se kopira-->
+      </div><!-- /.panel do ovdje -->
+      </div>
+  </div>
+  <hr>
+  <router-outlet></router-outlet>
+</div>
+

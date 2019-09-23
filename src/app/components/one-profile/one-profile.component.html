@@ -1,0 +1,63 @@
+<div class="container bootstrap snippets" *ngFor="let profile of profiles" >
+  <div class="row">
+      <div class="col-lg-3 col-md-3 col-sm-4">
+          <div class="panel rounded shadow">
+              <div class="panel-body">
+                  <div class="inner-all">
+                      <ul class="list-unstyled">
+                          <button *ngIf="adminService.ifAdmin()" 
+                            class="btn btn-link btn-sm" (click)="deleteProfile(profile.id)" >X</button>
+                          <li class="text-center">
+                              <img data-no-retina="" class="rounded-circle img-responsive img-bordered-primary"
+                               [src]="profile.profilePicture" alt="Profile Picture" width="150" height="150">
+                          </li>
+                          <li class="text-center">
+                              <h4 class="text-capitalize"> {{profile.firstName}} {{profile.lastName}} </h4>
+                             
+                          </li>
+                          
+                          <li><br></li>
+                         
+                      </ul>
+                  </div>
+              </div>
+          </div><!-- /.panel -->
+  
+         
+  
+      </div>
+      <div class="col-lg-9 col-md-9 col-sm-8">
+  
+      <div class="profile-cover">
+          <div class="cover rounded shadow no-overflow">
+              <div class="inner-cover">
+                  <!-- Start offcanvas btn group menu: This menu will take position at the top of profile cover (mobile only). -->
+                  <div class="btn-group cover-menu-mobile hidden-lg hidden-md">
+                      <button type="button" class="btn btn-theme btn-sm dropdown-toggle" data-toggle="dropdown">
+                          <i class="fa fa-bars"></i>
+                      </button>
+                      
+                  </div>
+                  <img  src="http://localhost:3000/images/cover.jpg" 
+                  class="img-responsive full-width" alt="cover" style="max-height:200px;">
+              </div>
+              <ul class="list-unstyled no-padding hidden-sm hidden-xs cover-menu">
+                  
+                  <li><a [routerLink]="['/newPictures']"><i class="fa fa-fw fa-user"></i> <span>Home</span></a></li>
+                  <li><a [routerLink]="['/profile',profile.id,'oneProfileImages']"><i class="fa fa-fw fa-photo"></i> 
+                    <span>Slike</span> <small>( {{profile.pictures.length}} ) </small></a></li>
+                  <li><a [routerLink]="['/profile',profile.id,'oneProfileStatuses']"><i class="fa fa-fw fa-users"></i>
+                    <span> Statusi </span><small>( {{profile.statuses.length}} )</small></a></li>
+                  
+              </ul>
+          </div><!-- /.cover -->
+      </div><!-- /.profile-cover -->
+      <div class="divider"></div>
+      <div class="panel rounded shadow">
+         
+      </div><!-- /.panel do ovdje -->
+      </div>
+  </div>
+  <router-outlet></router-outlet>
+</div>
+
