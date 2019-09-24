@@ -5,12 +5,12 @@
       <ul id="menu-content" class="menu-content collapse out">
           <li>
               <a routerLink="/newPictures">
-                  <i class="fa fa-dashboard fa-lg"></i> Najnovije Slike
+                  <i class="fa fa-fw fa-photo fa-lg"></i> Najnovije Slike
               </a>
           </li>
           <li>
               <a routerLink="/newStatuses">
-                  <i class="fa fa-user fa-lg"></i> Najnoviji Statusi
+                  <i class="fa fa-comments fa-lg"></i> Najnoviji Statusi
               </a>
           </li>
           <li>
@@ -20,27 +20,27 @@
           </li>
           <li *ngIf="registerService.isLogedIn()">
             <a [routerLink]="['/profile', 'myProfile']">
-                <i class="fa fa-users fa-lg"></i> Moj profil
+                <i class="fa fa-user fa-lg"></i> Moj profil
             </a>
         </li>
         <li>
             <a routerLink="/search">
-                <i class="fa fa-users fa-lg"></i> Pretraga
+                <i class="fa fa-search fa-lg"></i> Pretraga
             </a>
         </li>
         <li *ngIf="!registerService.isLogedIn()">
             <a routerLink="/register">
-                <i class="fa fa-users fa-lg"></i> Registruj se
+                <i class="fa fa-user-plus fa-lg"></i> Registruj se
             </a>
         </li>
         <li *ngIf="!registerService.isLogedIn()">
             <a routerLink="/login">
-                <i class="fa fa-users fa-lg"></i> Prijavi se
+                <i class="fa fa-sign-in fa-lg"></i> Prijavi se
             </a>
         </li>
         <li *ngIf="registerService.isLogedIn()">
             <a (click)="logout()">
-                <i class="fa fa-users fa-lg"></i> Odjavi se
+                <i class="fa fa-sign-out fa-lg"></i> Odjavi se
             </a>
         </li>
       </ul>
